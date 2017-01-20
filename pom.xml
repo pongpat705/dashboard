@@ -53,7 +53,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		
+
 <!-- https://mvnrepository.com/artifact/com.oracle/ojdbc14 -->
 		<dependency>
 		    <groupId>com.oracle</groupId>
