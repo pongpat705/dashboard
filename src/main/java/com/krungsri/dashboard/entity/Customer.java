@@ -6,14 +6,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.jsondoc.core.annotation.ApiObject;
+import org.jsondoc.core.annotation.ApiObjectField;
+
 @Entity
 @Table(name = "CUSTOMER")
+@ApiObject
 public class Customer {
 
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
+	@ApiObjectField
     private Long id;
+	@ApiObjectField(description = "first name of customer")
     private String firstName;
+	@ApiObjectField(description = "last name of customer")
     private String lastName;
     
     

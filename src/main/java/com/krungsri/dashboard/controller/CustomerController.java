@@ -1,23 +1,39 @@
 package com.krungsri.dashboard.controller;
 
+import org.jsondoc.core.annotation.Api;
+import org.jsondoc.core.annotation.ApiAuthNone;
+import org.jsondoc.core.annotation.ApiPathParam;
+import org.jsondoc.core.annotation.ApiQueryParam;
+import org.jsondoc.core.annotation.ApiResponseObject;
+import org.jsondoc.core.annotation.ApiVersion;
+import org.jsondoc.core.pojo.ApiStage;
+import org.jsondoc.core.pojo.ApiVisibility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.krungsri.dashboard.entity.Customer;
 import com.krungsri.dashboard.repository.CustomerRepository;
 
 @Controller
+@RequestMapping(value = "/customer")
+@Api(name = "Customer services", description = "Methods for managing customer", group = "Sales", visibility = ApiVisibility.PUBLIC, stage = ApiStage.RC)
+@ApiVersion(since = "1.0", until = "2.12")
+@ApiAuthNone
 public class CustomerController {
 	
 	  @Autowired
 	  CustomerRepository customerRepo;
 	
 	  
-	  @RequestMapping("/create")
+	  @RequestMapping(value = "/create", method = RequestMethod.GET)
 	  @ResponseBody
-	  public String create(String firstName, String lastName) {
+	  public String create(	@ApiQueryParam(description = "name of customer", name="firstName") @RequestParam(value="firstName") String firstName, 
+			  				@ApiQueryParam(description = "lastName of customer", name="lastName") @RequestParam(value="lastName") String lastName) {
 		  String customerId = "";
 	    try {
 	      Customer customer = new Customer();
