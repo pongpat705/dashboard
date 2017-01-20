@@ -1,0 +1,13 @@
+  <div class="row" style="margin-bottom: 20px;">
+	    <div class="col-md-1 border" style="margin-right:20px;">
+				<a ui-sref="app.systems.individual.config({systemId:systemId})" 
+				ng-class="{'btn-danger form-submit':isCurrentState('app.systems.individual.config')}"
+				class="btn btn-primary form-submit">Setting</a>
+	    </div>
+	    
+	    <div class="col-md-1 border" style="margin-right:20px;">
+				<a ui-sref="app.systems.individual.route({systemId:systemId})"
+				ng-class="{'btn-danger form-submit':isCurrentState('app.systems.individual.route')}" 
+				class="btn btn-primary form-submit">Route</a>
+	    </div>
+  </div>  

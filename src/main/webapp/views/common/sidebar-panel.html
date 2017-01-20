@@ -1,0 +1,50 @@
+<div class="brand">
+  <a class="brand-logo">
+  
+    <img src="{{baseDomain}}/console/images/logo-krungsri.png" height="96px">
+  </a>
+  <a href="#" class="small-menu-visible brand-logo">BAY</a>
+  <!-- /logo -->
+
+</div>
+<!-- navigation start! -->
+<div class="nav" style="padding-top: 70px; padding-left: 15px;">
+	<!-- line -->
+	<div class="row">
+		<hr/>
+	</div>	
+	<div class="row" style="margin-bottom:10px;" ng-if="checkPermission('MAP_MN_SYSTEM')" ng-class="{'text-danger':isCurrentState('app.systems')}" >
+		<a ui-sref-active="active" ui-sref="app.systems">
+			<i class="fa fa-tachometer fa-2x fa-fw"> </i>
+			<span>Select System</span>
+		</a>	
+	</div>
+	<!-- line -->
+	<div class="row">
+		<hr/>
+	</div>		
+	<div class="row" style="margin-bottom:10px;" ng-if="checkPermission('MAP_MN_PARAMETER')" ng-class="{'text-danger':isCurrentState('app.param.listing')}" >
+		<a ui-sref-active="active" ui-sref="app.param.listing"> 
+			<i class="fa fa-cogs fa-2x fa-fw"></i>
+			<span>Parameters Config </span>
+		</a>
+	</div>
+	<!-- line -->
+	<div class="row">
+		<hr/>
+	</div>	
+	<div class="row" style="margin-bottom:10px;" ng-if="!isAuthenticated()">
+      <a ui-sref="user.signin">
+         <span> Sign in</span>
+      </a>	
+	</div>
+	<div class="row" style="margin-bottom:10px;" ng-if="isAuthenticated()">
+      <a ui-sref="user.signout">
+      	<i class="fa fa-sign-out fa-2x fa-fw"> </i>
+        <span> Sign out</span>
+      </a>	
+	</div>	
+	<div class="row">
+		<hr/>
+	</div>	
+</div>
