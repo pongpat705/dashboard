@@ -1,0 +1,11 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Edit Route</h3>
+    <div data-ng-include="'views/common/menu-top-panel.html'"></div>
+</div>
+<div class="modal-body">
+
+</div>
+<div class="modal-footer">
+	<button class="btn btn-primary" type="button" ng-disabled="!gatewayRouteForm.$valid" ng-click="saveRoute(route)">Save</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

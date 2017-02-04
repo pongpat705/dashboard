@@ -41,7 +41,59 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams',
                     }]);
                 }]
               }
-        })      
+        })     
+      .state('app.home.individual',{
+      	url: '/{stationId:int}',
+      	onEnter:['$uibModal', '$state', '$stateParams', function($uibModal, $state, $stateParams){
+      		$uibModal.open({
+      			template : '<div ui-view="modal"></div>',
+      			size: 'lg'
+      		}).result.finally(function(){
+      			$state.go('app.home',{},{reload:true});
+      		});
+      	}],
+    	resolve: {
+            deps: ['$ocLazyLoad', function($ocLazyLoad) {
+              return $ocLazyLoad.load([{
+                  files: [	'./scripts/controllers/path/configCtrl.js',
+                	  		'./scripts/controllers/path/routeCtrl.js'
+                	  		]
+                }]);
+            }]
+          }
+      })
+      .state('app.home.individual.config',{
+      	url: '/config',
+      	views:{
+      		'modal@':{
+      			templateUrl:'views/app/path/config.html',
+      			controller: 'configCtrl'
+      		}
+      	}
+      })
+      .state('app.home.individual.route',{
+      	url: '/route',
+      	views:{
+      		'modal@':{
+      			templateUrl:'views/app/path/route.html',
+      			controller: 'routeCtrl'
+      		}
+      	}
+      })        
+        .state('app.parameters',{
+        	url: '/parameters',
+            templateUrl: './views/app/parameters/all.html',
+            controller: 'paramCtrl',
+        	resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                  return $ocLazyLoad.load([{
+                      files: [
+                              './scripts/controllers/parameters/paramCtrl.js'
+                              ]
+                    }]);
+                }]
+              }
+        })
       .state('user', {
         templateUrl: './views/common/session.html',
       }).state('user.signin', {

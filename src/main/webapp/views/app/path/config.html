@@ -1,0 +1,53 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Edit Station</h3>
+    <div data-ng-include="'views/common/menu-top-panel.html'"></div>
+</div>
+<div class="modal-body">
+  	<form class="form-horizontal" role="form" name="stationForm" >
+  		<div class="form-group">
+  			<label class="col-sm-2 text-uppercase control-label">Station Name <span class="require">*</span></label>
+  			<div class="col-sm-10">
+  				<input type="text" class="form-control" name="stationName" ng-model="station.stationName" required="required"></input>
+  			</div>
+  		</div>
+  		<div class="form-group">
+  			<label class="col-sm-2 text-uppercase control-label">Latitude <span class="require">*</span></label>
+  			<div class="col-sm-10" >
+  				<input type="text" class="form-control" name="stationLat" ng-model="station.stationLat" required="required"></input>
+  			</div>
+  		</div>  	
+  		<div class="form-group">
+  			<label class="col-sm-2 text-uppercase control-label">Longitude <span class="require">*</span></label>
+  			<div class="col-sm-10" >
+  				<input type="text" class="form-control" name="stationLng" ng-model="station.stationLng" required="required"></input>
+  			</div>
+  		</div>
+  		<div class="form-group">
+  			<label class="col-sm-2 text-uppercase control-label">Type <span class="require">*</span></label>
+  			<div class="col-sm-10" >
+  				<input type="text" class="form-control" name="stationType" ng-model="station.stationType" required="required"></input>
+  			</div>
+  		</div>
+  		<div class="form-group">
+  			<label class="col-sm-2 text-uppercase control-label">Price <span class="require">*</span></label>
+  			<div class="col-sm-10" >
+  				<input type="text" class="form-control" name="stationPrice" ng-model="station.stationPrice" required="required"></input>
+  			</div>
+  		</div>  		  		   	
+        <div class="form-group">
+        	<label class="col-sm-2 text-uppercase control-label">is Extend? <span class="require">*</span></label>
+        	<div class="col-sm-10" >
+				<select class="form-control" name="stationExtend" 
+						required="required"
+						ng-model="station.stationExtend"
+						ng-options="e.value as e.label for e in extendType">
+					<option value="">==Select==</option>
+				</select>         		
+        	</div>
+        </div>   				
+  	</form>
+</div>
+<div class="modal-footer">
+	<button class="btn btn-primary" type="button" ng-disabled="!stationForm.$valid" ng-click="saveStation()">Save</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>
