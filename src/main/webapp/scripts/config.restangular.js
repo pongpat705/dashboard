@@ -2,7 +2,7 @@
 
 angular.module('app').config(function(RestangularProvider){
 	//set base url
-	RestangularProvider.setBaseUrl('/dashboard/api/');
+	RestangularProvider.setBaseUrl('/dashboard');
 	
     RestangularProvider.setResponseExtractor(function(response, operation) {
     	var extractedData;

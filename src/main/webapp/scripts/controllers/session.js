@@ -1,20 +1,9 @@
 'use strict';
 angular.module('app').controller('sessionCtrl', 
-		['$scope', '$state', '$auth', '$http', 'PermissionStore', '$rootScope', 'utilsService', 'toastr', '$q', '$interval', 'ParameterService',
-function sessionCtrl($scope, $state, $auth, $http, PermissionStore, $rootScope, utilsService, toastr, $q,  $interval, ParameterService) {
+		['$scope', '$state', '$auth', '$http', 'PermissionStore', '$rootScope', 'toastr', '$q', '$interval', 'Restangular', 
+function sessionCtrl($scope, $state, $auth, $http, PermissionStore, $rootScope, toastr, $q,  $interval, Restangular) {
 	$scope.iamPermissions = [];
 	$scope.iamRoles = [];
-	$rootScope.authConsoleMessage = {};
-	//load when controll is created.
-	ParameterService.findAllByParamGroup('CONSOLE_AUTH_MESSAGE').then(function(response){
-		angular.forEach(response.data._embedded.parameterInfo, function(value, key) {
-			$rootScope.authConsoleMessage[value.paramCode] = value;
-		});
-	}).catch(function(response){
-		console.log(response);
-	});
-	
-	
 	
 	$scope.login = function(){
 		toastr.clear();
@@ -22,20 +11,30 @@ function sessionCtrl($scope, $state, $auth, $http, PermissionStore, $rootScope, 
 		
 		$auth.login($scope.user)
 		  .then(function(response) {
+			  console.log(response);
+			  var token = response.headers('maoz-token');
+			  $auth.setToken(token.replace('Bearer ', ''));
 		    // setting roles,objects after login success
 			  PermissionStore.clearStore();
 			  
 			  isTokenValid = true;
-			  $interval(function(){
-				  utilsService.intervalServer().then(function(response){
-					  isTokenValid = true;
-				  }).catch(function(response){
-					  isTokenValid = false;
-				  });
-			  }, 60*1000);
+//			  $interval(function(){
+//				  utilsService.intervalServer().then(function(response){
+//					  isTokenValid = true;
+//				  }).catch(function(response){
+//					  isTokenValid = false;
+//				  });
+//			  }, 60*1000);
 			  
 			  PermissionStore.definePermission('isAuthenticated', function(){
 				  return isTokenValid;
+			  });
+			  var parseService = Restangular.one('/service/parse');
+			  parseService.get().then(function(response){
+				  
+			  }).catch(function(response) {
+				  toastr.error(response.data.message, 'Error');
+				  console.error('ERROR',response.data.error_detail);
 			  });
 			  
 			  utilsService.parseToken().then(function(response){

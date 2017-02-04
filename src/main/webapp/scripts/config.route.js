@@ -21,12 +21,12 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams',
     $stateProvider.state('app', {
         abstract: true,
         templateUrl: './views/common/layout.html',
-//        data: {
-//            permissions: {
-//              only: ['isAuthenticated'],
-//              redirectTo: 'user.signin'
-//            }
-//          }
+        data: {
+            permissions: {
+              only: ['isAuthenticated'],
+              redirectTo: 'user.signin'
+            }
+          }
       })
         .state('app.home', {
             url: '/home',
@@ -99,12 +99,12 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams',
       }).state('user.signin', {
         url: '/signin',
         templateUrl: './views/signin.html',
-//        controller:'sessionCtrl',
-//        resolve: {
-//          deps: ['$ocLazyLoad', function($ocLazyLoad) {
-//            return $ocLazyLoad.load('scripts/controllers/session.js');
-//          }]
-//        },
+        controller:'sessionCtrl',
+        resolve: {
+          deps: ['$ocLazyLoad', function($ocLazyLoad) {
+            return $ocLazyLoad.load('./scripts/controllers/session.js');
+          }]
+        },
         data: {
           appClasses: 'signin usersession',
           contentClasses: 'session-wrapper'

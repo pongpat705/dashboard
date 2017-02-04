@@ -4,7 +4,7 @@ angular.module('app').config(['toastrConfig', function(toastrConfig){
 	angular.extend(toastrConfig, {
 		newestOnTop		: true,
 		autoDismiss		: true,
-		timeOut			: 1,
+		timeOut			: 0,
 		tapToDismiss	: true,
 		preventOpenDuplicates : true,
 		maxOpened		: 1,	

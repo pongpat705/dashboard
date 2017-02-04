@@ -5,15 +5,14 @@
         <form role="form" class="form-layout" method="post" ng-submit="login()" name="loginForm">
           <div class="text-center m-b">
             <h4 class="text-uppercase">
-            <img src="images/logo-krungsri.png" height="96px">
-            Mobile Authentication Console</h4>
+            	<img src="images/web_hi_res_512.png" height="96px">
+            </h4>
           </div>
           <div class="form-inputs">
             <label class="text-uppercase">User name</label>
             <input type="text" class="form-control input-lg" placeholder="Username" ng-model="user.username" required>
             <label class="text-uppercase">Password</label>
             <input type="password" class="form-control input-lg" placeholder="Password" ng-model="user.password" required>
-            <input type="hidden" ng-model="user.system" ng-init="user.system='MAP'"required>
           </div>
           <button class="btn btn-default btn-block btn-lg m-b" type="submit">Login</button>
 <!--           <div class="divider">

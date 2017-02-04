@@ -17,7 +17,7 @@ angular.module('app').controller('configCtrl', ['$scope', '$http', '$localStorag
 						];
 	
 	$scope.loadStationDetail = function(){
-		var stationServices = Restangular.one('stationses', $scope.stationId);
+		var stationServices = Restangular.one('/api/stationses', $scope.stationId);
 		
 		stationServices.get().then(function(response){
 			$scope.station = response;
@@ -28,7 +28,7 @@ angular.module('app').controller('configCtrl', ['$scope', '$http', '$localStorag
 	};
 	
 	$scope.saveStation = function() {
-		var stationServices = Restangular.one('stationses', $scope.stationId);
+		var stationServices = Restangular.one('/api/stationses', $scope.stationId);
 		stationServices.patch($scope.station).then(function(response){
 			toastr.success('Update success');
 			$scope.ok();

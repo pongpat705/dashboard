@@ -9,7 +9,7 @@ angular.module('app').controller('homeCtrl', ['$scope', '$http', '$localStorage'
 	$scope.stations = {};
 	
 	$scope.loadStations = function(){
-		var stationServices = Restangular.all('stationses');
+		var stationServices = Restangular.all('/api/stationses');
 		
 		stationServices.getList({size:1000}).then(function(response){
 			$scope.stations = response;
