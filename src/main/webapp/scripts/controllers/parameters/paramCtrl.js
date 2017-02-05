@@ -1,6 +1,12 @@
 'use strict';
-angular.module('app').controller('paramCtrl', ['$scope', '$http', '$localStorage', '$timeout', '$translate', '$auth', '$state' , '$stateParams', 
-  function paramCtrl($scope, $http, $localStorage, $timeout, $translate, $auth, $state, $stateParams) {
+angular
+	.module('app')
+		.controller('paramCtrl', [	'$scope', '$http', '$localStorage', 
+									'$timeout', '$translate', '$auth', 
+									'$state' , '$stateParams', '$rootScope',
+  function paramCtrl(	$scope, $http, $localStorage, 
+		  				$timeout, $translate, $auth, 
+		  				$state, $stateParams, $rootScope) {
 	
   }
 ]);

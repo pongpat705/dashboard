@@ -1,6 +1,15 @@
+
 'use strict';
-angular.module('app').controller('homeCtrl', ['$scope', '$http', '$localStorage', '$timeout', '$translate', '$auth', '$state' , '$stateParams', 'Restangular', 'toastr',
-  function homeCtrl($scope, $http, $localStorage, $timeout, $translate, $auth, $state, $stateParams, Restangular, toastr) {
+angular
+	.module('app')
+		.controller('homeCtrl', [	'$scope', '$http', '$localStorage', 
+									'$timeout', '$translate', '$auth', 
+									'$state' , '$stateParams', 'Restangular', 
+									'toastr', '$rootScope',
+  function homeCtrl($scope, $http, $localStorage, 
+		  			$timeout, $translate, $auth, 
+		  			$state, $stateParams, Restangular, 
+		  			toastr, $rootScope) {
 	
 	$scope.$watch("init", function(){
 		$scope.loadStations();
@@ -16,11 +25,13 @@ angular.module('app').controller('homeCtrl', ['$scope', '$http', '$localStorage'
 		}).catch(function(response) {
 			console.error('Error',response);
 			toastr.error(response.data.message, 'Error');
+			if (403 == response.status){
+				$rootScope.unAuthorized();
+			}
 		});
 	};
 	
 	$scope.openModal = function(stationId){
-		console.info('open station', stationId);
 		$state.go('app.home.individual.config', {stationId:stationId});
 	}
 	

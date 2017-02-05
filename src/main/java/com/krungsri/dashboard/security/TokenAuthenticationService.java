@@ -1,24 +1,13 @@
 package com.krungsri.dashboard.security;
 
-import java.io.IOException;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.krungsri.dashboard.entity.Users;
-import com.krungsri.dashboard.repository.UsersRepository;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -26,7 +15,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 @Service
 public class TokenAuthenticationService {
 
-	private final long EXPIRATIONTIME = 1000*60*10;
+	private final long EXPIRATIONTIME = 1000*60*1;
 	
 	private final String secret = "MaozcaptionitSuperSecret";
 	

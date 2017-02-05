@@ -1,6 +1,14 @@
 'use strict';
-angular.module('app').controller('configCtrl', ['$scope', '$http', '$localStorage', '$timeout', '$translate', '$auth', '$state' , '$stateParams', 'Restangular', 'toastr',
-  function configCtrl($scope, $http, $localStorage, $timeout, $translate, $auth, $state, $stateParams, Restangular, toastr) {
+angular
+	.module('app')
+		.controller('configCtrl', [	'$scope', '$http', '$localStorage', 
+									'$timeout', '$translate', '$auth', 
+									'$state' , '$stateParams', 'Restangular', 
+									'toastr', '$rootScope',
+  function configCtrl(	$scope, $http, $localStorage, 
+		  				$timeout, $translate, $auth, 
+		  				$state, $stateParams, Restangular, 
+		  				toastr, $rootScope) {
 	
 	$scope.$watch("init", function(){
 		$scope.loadStationDetail();
@@ -24,6 +32,9 @@ angular.module('app').controller('configCtrl', ['$scope', '$http', '$localStorag
 		}).catch(function(response) {
 			console.error('Error',response);
 			toastr.error(response.data.message, 'Error');
+			if (403 == response.status){
+				$rootScope.unAuthorized();
+			}
 		});
 	};
 	
@@ -35,6 +46,9 @@ angular.module('app').controller('configCtrl', ['$scope', '$http', '$localStorag
 		}).catch(function(response) {
 			console.error('Error',response);
 			toastr.error(response.data.message, 'Error');
+			if (403 == response.status){
+				$rootScope.unAuthorized();
+			}
 		});
 	};
 	

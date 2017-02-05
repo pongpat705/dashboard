@@ -65,6 +65,11 @@ angular
 		  }
 	  };
 	  
+	  $rootScope.unAuthorized = function(response){
+		  $uibModalStack.dismissAll();
+		  $state.go('user.signout');
+	  }
+	  
 	  $rootScope.initParams = function(){
 		  var promises = [];
 		  

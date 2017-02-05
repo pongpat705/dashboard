@@ -10,8 +10,6 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams',
   },
 ]).config(['$stateProvider', '$urlRouterProvider', '$injector',
   function($stateProvider, $urlRouterProvider, $injector) {
-    // For unmatched routes
-//	 $urlRouterProvider.otherwise('/home');
     $urlRouterProvider.otherwise( function($injector) {
     	var $state = $injector.get("$state");
     	$state.go('app.home');
@@ -23,7 +21,7 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams',
         templateUrl: './views/common/layout.html',
         data: {
             permissions: {
-              only: ['isAuthenticated'],
+              only: ['ADMIN'],
               redirectTo: 'user.signin'
             }
           }
