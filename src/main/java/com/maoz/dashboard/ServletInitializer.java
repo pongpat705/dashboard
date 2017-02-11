@@ -1,4 +1,4 @@
-package com.krungsri.dashboard;
+package com.maoz.dashboard;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;

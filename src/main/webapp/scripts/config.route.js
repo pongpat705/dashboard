@@ -21,7 +21,7 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams',
         templateUrl: './views/common/layout.html',
         data: {
             permissions: {
-              only: ['ADMIN'],
+              only: ['ROLE_ADMIN'],
               redirectTo: 'user.signin'
             }
           }

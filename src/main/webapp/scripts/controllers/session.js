@@ -28,11 +28,11 @@ function sessionCtrl(	$scope, $state, $auth,
 			  });
 			  var parseService = Restangular.one('/service/parse');
 			  parseService.get().then(function(response){
-				  var roles = response.usersRoles;
+				  var roles = response.authorities;
 				  var roleList = [];
 				  
 				  angular.forEach(roles, function(value, key) {
-					  this.push(value.role);
+					  this.push(value.authority);
 				  }, roleList);
 				  
 				  PermissionStore

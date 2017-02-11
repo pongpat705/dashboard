@@ -1,10 +1,10 @@
-package com.krungsri.dashboard.config;
+package com.maoz.dashboard.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurerAdapter;
 
-import com.krungsri.dashboard.entity.Stations;
+import com.maoz.dashboard.entity.Stations;
 
 @Configuration
 public class RepositoryConfiguration extends RepositoryRestConfigurerAdapter{
