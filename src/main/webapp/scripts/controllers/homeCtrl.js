@@ -18,7 +18,7 @@ angular
 	$scope.stations = {};
 	
 	$scope.loadStations = function(){
-		var stationServices = Restangular.all('/api/stationses');
+		var stationServices = Restangular.all('/api/stations');
 		
 		stationServices.getList({size:1000}).then(function(response){
 			$scope.stations = response;

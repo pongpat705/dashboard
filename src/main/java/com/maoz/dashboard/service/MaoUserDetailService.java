@@ -11,9 +11,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.maoz.dashboard.entity.Users;
-import com.maoz.dashboard.entity.UsersRole;
-import com.maoz.dashboard.repository.UsersRepository;
+import com.maoz.dashboard.entity.JDBCUser;
+import com.maoz.dashboard.entity.JDBCUserRole;
+import com.maoz.dashboard.repository.JDBCUserRepository;
 import com.maoz.dashboard.security.Authorities;
 import com.maoz.dashboard.security.CustomUserDetails;
 import com.maoz.dashboard.security.anotherway.JwtTokenRequest;
@@ -21,13 +21,13 @@ import com.maoz.dashboard.security.anotherway.JwtTokenRequest;
 @Service
 public class MaoUserDetailService implements UserDetailsService {
 
-	@Autowired UsersRepository usersRepository;
+	@Autowired JDBCUserRepository usersRepository;
 	
 	private final Logger log = LoggerFactory.getLogger(this.getClass());	
 	
 	@Override
 	public CustomUserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Users user = usersRepository.findByUserName(username);
+		JDBCUser user = usersRepository.findByUserName(username);
 		if (null == user){
 			log.debug("user: "+username+" not found!");
 			throw new UsernameNotFoundException("user: "+username+" not found!");
@@ -38,7 +38,7 @@ public class MaoUserDetailService implements UserDetailsService {
 			throw new UsernameNotFoundException("user: "+username+" roles not found!");
 		}
 		
-		for (UsersRole ur : user.getUsersRoles()) {
+		for (JDBCUserRole ur : user.getUsersRoles()) {
 			Authorities ga = new Authorities(ur.getRole());
 			gant.add(ga);
 		}

@@ -15,8 +15,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "USERS")
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="id")
-public class Users {
+public class JDBCUser {
 
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -29,7 +28,7 @@ public class Users {
 	private String enabled;
 	
 	@OneToMany(mappedBy="users", fetch=FetchType.EAGER)
-	private Set<UsersRole> usersRoles;
+	private Set<JDBCUserRole> usersRoles;
 
 	public Long getId() {
 		return id;
@@ -63,11 +62,11 @@ public class Users {
 		this.enabled = enabled;
 	}
 
-	public Set<UsersRole> getUsersRoles() {
+	public Set<JDBCUserRole> getUsersRoles() {
 		return usersRoles;
 	}
 
-	public void setUsersRoles(Set<UsersRole> usersRoles) {
+	public void setUsersRoles(Set<JDBCUserRole> usersRoles) {
 		this.usersRoles = usersRoles;
 	}
 	

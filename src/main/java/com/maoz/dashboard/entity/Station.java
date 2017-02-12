@@ -13,7 +13,7 @@ import org.jsondoc.core.annotation.ApiObjectField;
 
 @Entity
 @Table(name = "STATIONS")
-public class Stations {
+public class Station {
 
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)

@@ -11,18 +11,18 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.maoz.dashboard.entity.Users;
-import com.maoz.dashboard.repository.UsersRepository;
+import com.maoz.dashboard.entity.JDBCUser;
+import com.maoz.dashboard.repository.JDBCUserRepository;
 
 @Service
 public class UserServiceImpl implements UserService {
 	
-	@Autowired UsersRepository usersRepository;
+	@Autowired JDBCUserRepository usersRepository;
 	
 	private final Logger log = LoggerFactory.getLogger(this.getClass());	
 	
 	public String userToString(String userName){
-    	Users user = usersRepository.findByUserName(userName);
+    	JDBCUser user = usersRepository.findByUserName(userName);
     	ObjectMapper mapper = new ObjectMapper();
     	String tramformed = "";
 		try {
@@ -35,17 +35,17 @@ public class UserServiceImpl implements UserService {
 		return tramformed;
     }
 	
-	public Users getUser(String userName){
+	public JDBCUser getUser(String userName){
 		log.info("get userBean of "+userName);
-		Users user = usersRepository.findByUserName(userName);
+		JDBCUser user = usersRepository.findByUserName(userName);
 		return user;
 	}
     
-    public Users stringToUsers(String usersString) {
+    public JDBCUser stringToUsers(String usersString) {
     	ObjectMapper mapper = new ObjectMapper();
-    	Users users = null;
+    	JDBCUser users = null;
 		try {
-			users = mapper.readValue(usersString, Users.class);
+			users = mapper.readValue(usersString, JDBCUser.class);
 		} catch (JsonParseException e) {
 			log.error(e.getMessage());
 			e.printStackTrace();

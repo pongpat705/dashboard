@@ -41,6 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.antMatchers("/jsondoc").permitAll()
 			.antMatchers("/jsondoc-ui.html/**").permitAll()
 			.antMatchers("/webjars/**").permitAll()
+			.antMatchers("/api/**").permitAll()
 			.antMatchers(HttpMethod.POST, "/login").permitAll()
 			.antMatchers("/service/xxx").hasRole("ADMIN")
 			.anyRequest().authenticated()
