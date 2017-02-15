@@ -6,7 +6,7 @@
 	<groupId>com.mao</groupId>
 	<artifactId>dashboard</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>dashboard</name>
 	<description>dashboard</description>
@@ -63,7 +63,7 @@
 		<dependency>
 		    <groupId>mysql</groupId>
 		    <artifactId>mysql-connector-java</artifactId>
-		    <version>6.0.5</version>
+		    <version>5.1.40</version>
 		</dependency>
 		<!-- jsondoc -->
 		<dependency>
@@ -102,6 +102,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
 
 </project>

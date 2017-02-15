@@ -1,15 +1,15 @@
 package com.maoz.dashboard.entity;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.jsondoc.core.annotation.ApiObject;
-import org.jsondoc.core.annotation.ApiObjectField;
 
 @Entity
 @Table(name = "STATIONS")
@@ -24,6 +24,12 @@ public class Station {
 	private String type;
 	private BigDecimal price;
 	private Long extend;
+	
+	@OneToMany(mappedBy="origin", fetch=FetchType.EAGER)
+	private List<Path> pathOrigin;
+	
+	@OneToMany(mappedBy="dest", fetch=FetchType.EAGER)
+	private List<Path> pathDest;
     
 	public Long getId() {
 		return id;
@@ -79,6 +85,22 @@ public class Station {
 
 	public void setExtend(Long extend) {
 		this.extend = extend;
+	}
+
+	public List<Path> getPathOrigin() {
+		return pathOrigin;
+	}
+
+	public void setPathOrigin(List<Path> pathOrigin) {
+		this.pathOrigin = pathOrigin;
+	}
+
+	public List<Path> getPathDest() {
+		return pathDest;
+	}
+
+	public void setPathDest(List<Path> pathDest) {
+		this.pathDest = pathDest;
 	}
 
 	@Override
