@@ -2,11 +2,11 @@
 'use strict';
 angular
 	.module('app')
-		.controller('homeCtrl', [	'$scope', '$http', '$localStorage', 
+		.controller('nodeCtrl', [	'$scope', '$http', '$localStorage', 
 									'$timeout', '$translate', '$auth', 
 									'$state' , '$stateParams', 'Restangular', 
 									'toastr', '$rootScope',
-  function homeCtrl($scope, $http, $localStorage, 
+  function nodeCtrl($scope, $http, $localStorage, 
 		  			$timeout, $translate, $auth, 
 		  			$state, $stateParams, Restangular, 
 		  			toastr, $rootScope) {
@@ -18,7 +18,7 @@ angular
 	$scope.stations = {};
 	
 	$scope.loadStations = function(){
-		var stationServices = Restangular.all('/api/stations');
+		var stationServices = Restangular.all('/dashboard/api/stations');
 		
 		stationServices.getList({size:1000}).then(function(response){
 			$scope.stations = response;
@@ -32,7 +32,7 @@ angular
 	};
 	
 	$scope.openModal = function(stationId){
-		$state.go('app.home.individual.config', {stationId:stationId});
+		$state.go('app.node.individual.config', {stationId:stationId});
 	}
 	
   }

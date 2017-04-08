@@ -3,7 +3,7 @@
   
     <img src="images/web_hi_res_512.png" height="96px">
   </a>
-  <a href="#" class="small-menu-visible brand-logo">BAY</a>
+  <a href="#" class="small-menu-visible brand-logo">Mao</a>
   <!-- /logo -->
 
 </div>
@@ -29,12 +29,18 @@
 <!-- 			<span>Parameters Config </span> -->
 <!-- 		</a> -->
 <!-- 	</div> -->
-	<div class="row" style="margin-bottom:10px;" ng-class="{'text-danger':isCurrentState('app.home')}" >
-		<a ui-sref-active="active" ui-sref="app.home">
+	<div class="row" style="margin-bottom:10px;" ng-class="{'text-danger':isCurrentState('app.node')}" >
+		<a ui-sref-active="active" ui-sref="app.node">
 			<i class="fa fa-tachometer fa-2x fa-fw"> </i>
-			<span>Home</span>
+			<span>Node</span>
 		</a>	
 	</div>
+	<div class="row" style="margin-bottom:10px;" ng-class="{'text-danger':isCurrentState('app.edge')}" >
+		<a ui-sref-active="active" ui-sref="app.edge">
+			<i class="fa fa-tachometer fa-2x fa-fw"> </i>
+			<span>Edge</span>
+		</a>	
+	</div>	
 	<div class="row" style="margin-bottom:10px;" ng-class="{'text-danger':isCurrentState('app.parameters')}" >
 		<a ui-sref-active="active" ui-sref="app.parameters">
 			<i class="fa fa-tachometer fa-2x fa-fw"> </i>

@@ -1,0 +1,22 @@
+<div class="p-x">
+  <div class="row">
+  	
+  </div>
+  <br>
+  <div class="row">
+ 	<div ng-repeat="e in edges" ng-click="openModal(e.id)">
+	    <div class="col-md-2 col-lg-2">
+	    	<a>
+		      <div class="card card-block no-border bg-white-light col-md-12">
+		      	<div class="col-md-12">
+					<p class="card-title" style="white-space:nowrap;"><b>&nbsp;{{e.origin.$object.name}} - {{e.dest.$object.name}}</b></p>
+					
+					<p class="card-text">&nbsp;{{e.type}}</p>
+		      	</div>
+		      </div>		    	
+	    	</a>
+	    </div>
+	    
+ 	</div>
+  </div>
+</div>

@@ -26,7 +26,7 @@ function sessionCtrl(	$scope, $state, $auth,
 			  PermissionStore.definePermission('isAuthenticated', function(){
 				  return isTokenValid;
 			  });
-			  var parseService = Restangular.one('/service/parse');
+			  var parseService = Restangular.one('/dashboard/service/parse');
 			  parseService.get().then(function(response){
 				  var roles = response.authorities;
 				  var roleList = [];
@@ -38,12 +38,12 @@ function sessionCtrl(	$scope, $state, $auth,
 				  PermissionStore
 				  	.defineManyPermissions(roleList, function(permissionName, transitionProperties) {
 				  		//FIXME
-				  		 if ('app.home' == transitionProperties.toState.name){
+				  		 if ('app.node' == transitionProperties.toState.name){
 							  $uibModalStack.dismissAll();
 						  }
 				  		return true;
 				  	});
-				  $state.go('app.home');
+				  $state.go('app.node');
 			  }).catch(function(response) {
 				  toastr.error(response.data.message, 'Error');
 				  console.error('ERROR',response.data.error_detail);

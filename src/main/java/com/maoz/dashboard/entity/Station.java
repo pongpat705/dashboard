@@ -25,10 +25,10 @@ public class Station {
 	private BigDecimal price;
 	private Long extend;
 	
-	@OneToMany(mappedBy="origin", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="origin", fetch=FetchType.LAZY)
 	private List<Path> pathOrigin;
 	
-	@OneToMany(mappedBy="dest", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="dest", fetch=FetchType.LAZY)
 	private List<Path> pathDest;
     
 	public Long getId() {

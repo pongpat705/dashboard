@@ -26,58 +26,90 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams',
             }
           }
       })
-        .state('app.home', {
-            url: '/home',
-            templateUrl: './views/app/home.html',
-            controller: 'homeCtrl',
+        .state('app.node', {
+            url: '/node',
+            templateUrl: './views/app/node/node.html',
+            controller: 'nodeCtrl',
         	resolve: {
                 deps: ['$ocLazyLoad', function($ocLazyLoad) {
                   return $ocLazyLoad.load([{
                       files: [
-                              './scripts/controllers/homeCtrl.js'
+                              './scripts/controllers/node/nodeCtrl.js'
                               ]
                     }]);
                 }]
               }
         })     
-      .state('app.home.individual',{
+      .state('app.node.individual',{
       	url: '/{stationId:int}',
       	onEnter:['$uibModal', '$state', '$stateParams', function($uibModal, $state, $stateParams){
       		$uibModal.open({
       			template : '<div ui-view="modal"></div>',
       			size: 'lg'
       		}).result.finally(function(){
-      			$state.go('app.home',{},{reload:true});
+      			$state.go('app.node',{},{reload:true});
       		});
       	}],
     	resolve: {
             deps: ['$ocLazyLoad', function($ocLazyLoad) {
               return $ocLazyLoad.load([{
-                  files: [	'./scripts/controllers/path/configCtrl.js',
-                	  		'./scripts/controllers/path/routeCtrl.js'
+                  files: [	'./scripts/controllers/node/configCtrl.js'
                 	  		]
                 }]);
             }]
           }
       })
-      .state('app.home.individual.config',{
+      .state('app.node.individual.config',{
       	url: '/config',
       	views:{
       		'modal@':{
-      			templateUrl:'views/app/path/config.html',
+      			templateUrl:'views/app/node/config.html',
       			controller: 'configCtrl'
       		}
       	}
       })
-      .state('app.home.individual.route',{
-      	url: '/route',
+        .state('app.edge', {
+            url: '/edge',
+            templateUrl: './views/app/edge/edge.html',
+            controller: 'edgeCtrl',
+        	resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                  return $ocLazyLoad.load([{
+                      files: [
+                              './scripts/controllers/edge/edgeCtrl.js'
+                              ]
+                    }]);
+                }]
+              }
+        })
+        .state('app.edge.individual',{
+	      	url: '/{pathId:int}',
+	      	onEnter:['$uibModal', '$state', '$stateParams', function($uibModal, $state, $stateParams){
+	      		$uibModal.open({
+	      			template : '<div ui-view="modal"></div>',
+	      			size: 'lg'
+	      		}).result.finally(function(){
+	      			$state.go('app.edge',{},{reload:true});
+	      		});
+	      	}],
+	    	resolve: {
+	            deps: ['$ocLazyLoad', function($ocLazyLoad) {
+	              return $ocLazyLoad.load([{
+	                  files: [	'./scripts/controllers/edge/routeCtrl.js'
+	                	  		]
+	                }]);
+	            }]
+	          }
+      })
+      .state('app.edge.individual.config',{
+      	url: '/config',
       	views:{
       		'modal@':{
-      			templateUrl:'views/app/path/route.html',
+      			templateUrl:'views/app/edge/config.html',
       			controller: 'routeCtrl'
       		}
       	}
-      })        
+      })
         .state('app.parameters',{
         	url: '/parameters',
             templateUrl: './views/app/parameters/all.html',

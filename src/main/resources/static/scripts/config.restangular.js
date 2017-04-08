@@ -1,8 +1,7 @@
 'use strict';
 
 angular.module('app').config(function(RestangularProvider){
-	//set base url
-	RestangularProvider.setBaseUrl('/dashboard');
+	RestangularProvider.setBaseUrl('http://localhost:8080');
 	
     RestangularProvider.setResponseExtractor(function(response, operation) {
     	var extractedData;

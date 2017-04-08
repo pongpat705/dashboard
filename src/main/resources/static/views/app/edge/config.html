@@ -1,0 +1,35 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Edit Path</h3>
+</div>
+<div class="modal-body">
+  	<form class="form-horizontal" role="form" name="pathForm" >
+  		<div class="form-group">
+  			<label class="col-sm-2 text-uppercase control-label">Origin <span class="require">*</span></label>
+  			<div class="col-sm-10" >
+  				<input type="text" class="form-control" name="origin" ng-model="edge.origin" required="required"></input>
+  			</div>
+  		</div>  	
+  		<div class="form-group">
+  			<label class="col-sm-2 text-uppercase control-label">Destination <span class="require">*</span></label>
+  			<div class="col-sm-10" >
+  				<input type="text" class="form-control" name="dest" ng-model="edge.dest" required="required"></input>
+  			</div>
+  		</div>
+  		<div class="form-group">
+  			<label class="col-sm-2 text-uppercase control-label">Type <span class="require">*</span></label>
+  			<div class="col-sm-10" >
+  				<input type="text" class="form-control" name="type" ng-model="edge.type" required="required"></input>
+  			</div>
+  		</div>
+  		<div class="form-group">
+  			<label class="col-sm-2 text-uppercase control-label">Distance <span class="require">*</span></label>
+  			<div class="col-sm-10" >
+  				<input type="text" class="form-control" name="distance" ng-model="edge.distance" required="required"></input>
+  			</div>
+  		</div>  		  		   	  				
+  	</form>
+</div>
+<div class="modal-footer">
+	<button class="btn btn-primary" type="button" ng-disabled="!pathForm.$valid" ng-click="savePath()">Save</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

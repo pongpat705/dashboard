@@ -15,7 +15,6 @@ import org.springframework.security.web.authentication.AbstractAuthenticationPro
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.maoz.dashboard.security.anotherway.JwtTokenRequest;
 
 public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter{ 
 	 
