@@ -12,7 +12,7 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams',
   function($stateProvider, $urlRouterProvider, $injector) {
     $urlRouterProvider.otherwise( function($injector) {
     	var $state = $injector.get("$state");
-    	$state.go('app.home');
+    	$state.go('app.node');
     });
     
     // Application routes
@@ -101,29 +101,43 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams',
 	            }]
 	          }
       })
-      .state('app.edge.individual.config',{
+      .state('app.edge.individual.route',{
       	url: '/config',
       	views:{
       		'modal@':{
-      			templateUrl:'views/app/edge/config.html',
+      			templateUrl:'views/app/edge/route.html',
       			controller: 'routeCtrl'
       		}
       	}
       })
-        .state('app.parameters',{
-        	url: '/parameters',
-            templateUrl: './views/app/parameters/all.html',
-            controller: 'paramCtrl',
-        	resolve: {
-                deps: ['$ocLazyLoad', function($ocLazyLoad) {
-                  return $ocLazyLoad.load([{
-                      files: [
-                              './scripts/controllers/parameters/paramCtrl.js'
-                              ]
-                    }]);
-                }]
-              }
-        })
+	    .state('app.parameters',{
+	    	url: '/parameters',
+	        templateUrl: './views/app/parameters/all.html',
+	        controller: 'paramCtrl',
+	    	resolve: {
+	            deps: ['$ocLazyLoad', function($ocLazyLoad) {
+	              return $ocLazyLoad.load([{
+	                  files: [
+	                          './scripts/controllers/parameters/paramCtrl.js'
+	                          ]
+	                }]);
+	            }]
+	          }
+	    })
+	    .state('app.service',{
+	    	url: '/service',
+	        templateUrl: './views/app/service/service.html',
+	        controller: 'serviceCtrl',
+	    	resolve: {
+	            deps: ['$ocLazyLoad', function($ocLazyLoad) {
+	              return $ocLazyLoad.load([{
+	                  files: [
+	                          './scripts/controllers/service/serviceCtrl.js'
+	                          ]
+	                }]);
+	            }]
+	          }
+	    }) 
       .state('user', {
         templateUrl: './views/common/session.html',
       }).state('user.signin', {

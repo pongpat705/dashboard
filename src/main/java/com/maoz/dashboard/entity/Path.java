@@ -4,8 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,14 +15,8 @@ public class Path {
 	private Long id;
 	private Double distance;
 	private String type;
-	
-	@ManyToOne
-	@JoinColumn(name = "origin_id", insertable = true, updatable = true)
-	private Station origin;
-
-	@ManyToOne
-	@JoinColumn(name = "dest_id", insertable = true, updatable = true)
-	private Station dest;
+	private Long originId;
+	private Long destId;
 
 	public Long getId() {
 		return id;
@@ -50,21 +42,19 @@ public class Path {
 		this.type = type;
 	}
 
-	public Station getOrigin() {
-		return origin;
+	public Long getOriginId() {
+		return originId;
 	}
 
-	public void setOrigin(Station origin) {
-		this.origin = origin;
+	public void setOriginId(Long originId) {
+		this.originId = originId;
 	}
 
-	public Station getDest() {
-		return dest;
+	public Long getDestId() {
+		return destId;
 	}
 
-	public void setDest(Station dest) {
-		this.dest = dest;
+	public void setDestId(Long destId) {
+		this.destId = destId;
 	}
-	
-	
 }

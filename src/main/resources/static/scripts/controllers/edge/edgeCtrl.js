@@ -23,8 +23,8 @@ angular
 		edgeServices.getList({size:1000}).then(function(response){
 			
 			for (let r of response) {
-				var dest = Restangular.oneUrl('.', r._links.dest.href).get();
-				var origin = Restangular.oneUrl('.', r._links.origin.href).get();
+				var dest = Restangular.one('/dashboard/api/stations',r.destId).get();
+				var origin = Restangular.one('/dashboard/api/stations',r.originId).get();
 				var edge = {
 						'id' : r.id,
 						'distance' : r.distance,
@@ -46,7 +46,7 @@ angular
 	};
 	
 	$scope.openModal = function(pathId){
-		$state.go('app.edge.individual.config', {pathId:pathId});
+		$state.go('app.edge.individual.route', {pathId:pathId});
 	}
 	
   }

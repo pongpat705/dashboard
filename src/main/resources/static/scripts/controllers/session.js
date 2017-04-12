@@ -38,7 +38,7 @@ function sessionCtrl(	$scope, $state, $auth,
 				  PermissionStore
 				  	.defineManyPermissions(roleList, function(permissionName, transitionProperties) {
 				  		//FIXME
-				  		 if ('app.node' == transitionProperties.toState.name){
+				  		 if ('app.node' == transitionProperties.toState.name || 'app.edge' == transitionProperties.toState.name){
 							  $uibModalStack.dismissAll();
 						  }
 				  		return true;
