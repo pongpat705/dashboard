@@ -38,8 +38,8 @@ public class RestServiceController {
 		return result;
 	}
 	
-	@RequestMapping(value = "/metadata/reload", method = RequestMethod.POST)
-	public void reload(HttpServletRequest request, @RequestBody ShortestPathBean shortestPathBean) throws Exception {
+	@RequestMapping(value = "/metadata/reload", method = RequestMethod.HEAD)
+	public void reload(HttpServletRequest request) throws Exception {
 		 wbService.settingData();
 	}
 }
